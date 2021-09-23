@@ -20,11 +20,6 @@ namespace GUITest
             archerTransform = archer.transform.position;
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
         private void OnGUI()
         {
             GUI.Box(new Rect(10, 10, 200, 140), "Character selection");

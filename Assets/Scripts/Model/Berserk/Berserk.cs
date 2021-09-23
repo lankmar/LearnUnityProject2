@@ -45,6 +45,17 @@ namespace BerserkAdventure
 			//Debug.Log("_hp  - " + Hp);
 		}
 
+        internal void SetHp(int v)
+        {
+			Hp += v;
+			if (Hp > 100) Hp = 100;
+
+			if (Hp <= 0)
+			{
+				Hp = 1;
+			}
+		}
+
         public void IncreaseParameter(int potionPower, PotionType potionType)
         {
 			if (potionType == PotionType.HpPotion && hpPotionCount > 0)
