@@ -94,6 +94,7 @@ namespace BerserkAdventure
 
         private void IncreaseInput()
         {
+            if (!FindObjectOfType<Main>()) return;
             if (!Main.mainGame.charBerserk) return;
             if (Main.gameState == GameStage.Game)
             {
@@ -177,11 +178,27 @@ namespace BerserkAdventure
 
         protected virtual void AttackInput()
         {
-            if (Input.GetKeyDown(attackInput))
-                charMovement.Attack(true);
-            else if (Input.GetKeyUp(attackInput))
-                charMovement.Attack(false);
+            if (!FindObjectOfType<Main>() && Input.GetKeyDown(attackInput)) FlashLight(); //Ёто лишний ненужный код, только дл€ дз є3
+            // а это –ј— ќћћ≈Ќ“»–ќ¬ј“№ 
+            //if (Input.GetKeyDown(attackInput))
+            //    charMovement.Attack(true);
+            //else if (Input.GetKeyUp(attackInput))
+            //    charMovement.Attack(false);
         }
+
+        [SerializeField] Light light;
+        private void FlashLight()
+        {
+            if (!light) light = GetComponentInChildren<Light>();
+            if (!light) return;
+            else
+            {
+                light.GetComponent<Animation>().enabled = true;
+                light.GetComponent<Animation>().Play("Light");
+            }
+        }
+
+       
 
         /// <summary>
         /// Conditions to trigger the Jump animation & behavior

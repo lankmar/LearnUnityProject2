@@ -132,7 +132,7 @@ namespace BerserkAdventure
                         {
                             uiActionMassageText = FindObjectOfType<UiActionMassageText>();
                         }
-                        uiActionMassageText.Text = " ";
+                if (uiActionMassageText) uiActionMassageText.Text = " ";
             }
             return null;
         }
